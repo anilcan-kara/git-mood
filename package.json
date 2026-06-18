@@ -1,0 +1,32 @@
+{
+  "name": "git-mood",
+  "version": "0.1.2",
+  "description": "Color your GitHub contribution graph with the mood of your git commits",
+  "main": "bin/cli.js",
+  "bin": {
+    "git-mood": "./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anilcan-kara/git-mood.git"
+  },
+  "keywords": [
+    "git",
+    "mood",
+    "contribution",
+    "github",
+    "profile",
+    "visualization",
+    "sentiment",
+    "rust"
+  ],
+  "author": "Anilcan Kara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anilcan-kara/git-mood/issues"
+  },
+  "homepage": "https://github.com/anilcan-kara/git-mood#readme",
+  "engines": {
+    "node": ">=14"
+  }
+}
