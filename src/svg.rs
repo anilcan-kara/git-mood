@@ -120,7 +120,7 @@ pub fn generate_svg(log_data: &HashMap<String, DayStats>) -> String {
 
     // Build the final SVG with a beautiful widget wrapper
     format!(
-        r#"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 170" width="100%" height="100%">
+        r##"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 170" width="100%" height="100%">
   <style>
     .bg {{ fill: #0d1117; rx: 8px; }}
     .title {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 14px; fill: #adbac7; font-weight: 600; }}
@@ -158,7 +158,7 @@ pub fn generate_svg(log_data: &HashMap<String, DayStats>) -> String {
     <text x="0" y="48">T</text>
     <text x="0" y="72">S</text>
   </g>
-</svg>"#,
+</svg>"##,
         dominant_mood_color, dominant_mood_str, total_commits, grid_svg
     )
 }
