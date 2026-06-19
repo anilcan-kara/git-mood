@@ -65,7 +65,7 @@ fn print_help() {
     println!("Usage:");
     println!("  git-mood init           Install git hook in the current repository");
     println!("  git-mood status         Display terminal dashboard of your moods");
-    println!("  git-mood sync           Generate git-mood.svg and push it to profile");
+    println!("  git-mood sync [file]    Generate SVG (defaults to git-mood.svg) and push it");
     println!();
     println!("Hook Command (Internal):");
     println!("  git-mood commit-hook <file>  Analyze commit message file");
@@ -202,12 +202,17 @@ fn main() {
             println!();
         }
         "sync" => {
-            println!("{} Generating git-mood.svg...", "[git-mood]".green());
+            let svg_filename = if args.len() >= 3 {
+                &args[2]
+            } else {
+                "git-mood.svg"
+            };
+            println!("{} Generating {}...", "[git-mood]".green(), svg_filename);
             let db_path = get_log_path();
             let db = load_db(&db_path);
 
             let svg_content = svg::generate_svg(&db);
-            let svg_path = Path::new("git-mood.svg");
+            let svg_path = Path::new(svg_filename);
 
             if let Err(e) = fs::write(svg_path, svg_content) {
                 eprintln!("{}: Failed to write SVG file: {}", "Error".red().bold(), e);
@@ -221,7 +226,7 @@ fn main() {
                 
                 // git add
                 let add_status = Command::new("git")
-                    .args(["add", "git-mood.svg"])
+                    .args(["add", svg_filename])
                     .status();
 
                 if let Ok(status) = add_status {
