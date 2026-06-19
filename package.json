@@ -1,6 +1,6 @@
 {
   "name": "@nozich/git-mood",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Color your GitHub contribution graph with the mood of your git commits",
   "main": "bin/cli.js",
   "bin": {
